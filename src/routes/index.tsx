@@ -8,6 +8,7 @@ import { Story } from "@/components/wedding/Story";
 import { Ceremony } from "@/components/wedding/Ceremony";
 import { Gallery } from "@/components/wedding/Gallery";
 import { Gifts } from "@/components/wedding/Gifts";
+import { Guestbook } from "@/components/wedding/Guestbook";
 import { Faq } from "@/components/wedding/Faq";
 import { Footer } from "@/components/wedding/Footer";
 
@@ -109,6 +110,7 @@ function Index() {
         <Ceremony />
         <Gallery />
         <Gifts />
+        <Guestbook />
         <Faq />
         <Footer />
       </main>
