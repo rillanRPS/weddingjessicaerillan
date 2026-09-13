@@ -339,7 +339,7 @@ export function Gifts() {
                         <p className="mt-4 font-serif text-xl text-sage-deep">{brl(copy.price)}</p>
                         <div className="mt-6">
                           {gift.claimed_at ? (
-                            <p className="text-[0.7rem] uppercase tracking-[0.2em] text-muted-foreground">Já presenteado</p>
+                            <p className="gift-claimed-status inline-flex items-center rounded-full border border-gold/60 bg-gold/15 px-4 py-2 text-sm font-semibold uppercase tracking-[0.16em] text-gold-deep">✓ Já presenteado</p>
                           ) : (
                             <button type="button" aria-label={"Escolher " + copy.title} onClick={() => openGift({ ...gift, title: copy.title, price: copy.price })} className="press min-h-11 rounded-full border border-sage-deep px-6 py-2.5 text-[0.7rem] uppercase tracking-[0.2em] text-sage-deep hover:bg-sage-deep hover:text-primary-foreground">
                               Escolher presente
