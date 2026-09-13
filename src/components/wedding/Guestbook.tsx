@@ -32,7 +32,7 @@ export function Guestbook() {
 
   const loadMessages = async () => {
     const { data, error } = await supabase.from("guestbook_messages").select("id, name, message, created_at").order("created_at", { ascending: false }).limit(60);
-    if (error) { setLoadingError(true); return; }
+    if (error) { setLoadingError(true); setLoading(false); return; }
     setMessages((data || []) as GuestbookMessage[]);
     setLoadingError(false);
     setLoading(false);
