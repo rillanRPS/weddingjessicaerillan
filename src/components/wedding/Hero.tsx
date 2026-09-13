@@ -79,6 +79,9 @@ export function Hero() {
         >
           Confirmar presença
         </a>
+        <p className="mt-4 rounded-full border border-cream/30 bg-black/20 px-4 py-2 text-xs font-medium tracking-[0.12em] text-cream/90 backdrop-blur-sm">
+          Confirme até {wedding.rsvpDeadline}
+        </p>
       </div>
     </section>
   );
