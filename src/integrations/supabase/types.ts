@@ -97,6 +97,30 @@ export type Database = {
         }
         Relationships: []
       }
+      guestbook_messages: {
+        Row: {
+          created_at: string
+          delete_token: string
+          id: string
+          message: string
+          name: string
+        }
+        Insert: {
+          created_at?: string
+          delete_token: string
+          id?: string
+          message: string
+          name: string
+        }
+        Update: {
+          created_at?: string
+          delete_token?: string
+          id?: string
+          message?: string
+          name?: string
+        }
+        Relationships: []
+      }
       rsvps: {
         Row: {
           attending: boolean
@@ -160,6 +184,13 @@ export type Database = {
         Args: {
           _role: Database["public"]["Enums"]["app_role"]
           _user_id: string
+        }
+        Returns: boolean
+      }
+      delete_guestbook_message: {
+        Args: {
+          p_delete_token: string
+          p_message_id: string
         }
         Returns: boolean
       }
