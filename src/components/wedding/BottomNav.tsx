@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Heart, Church, Images, Gift } from "lucide-react";
+import { Heart, Church, Images, Gift, MessageCircle } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 const items = [
@@ -7,7 +7,7 @@ const items = [
   { id: "cerimonia", label: "Cerimônia", icon: Church },
   { id: "galeria", label: "Galeria", icon: Images },
   { id: "presentes", label: "Presentes", icon: Gift },
-  
+  { id: "recados", label: "Recados", icon: MessageCircle },
 ];
 
 export function BottomNav() {
@@ -45,7 +45,7 @@ export function BottomNav() {
           return (
             <li key={item.id} className="flex-1">
               <a
-                href={item.id === "confirmar" ? "https://wa.me/5511925308573?text=Oi%20J%C3%A9ssica%2C%20gostaria%20de%20confirmar%20minha%20presen%C3%A7a%20em%20seu%20casamento%F0%9F%A5%B0" : `#${item.id}`}
+                href={item.id === "confirmar" ? "https://wa.me/5511925308573?text=Oi%20J%C3%A9ssica%2C%20gostaria%20de%20confirmar%20minha%20presen%C3%A7a%20em%20seu%20casamento%F0%9F%A5%B0" : "#" + item.id}
                 aria-current={isActive ? "true" : undefined}
                 className={cn(
                   "group flex min-h-14 flex-col items-center justify-center gap-1 rounded-xl px-1 py-2 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring",
