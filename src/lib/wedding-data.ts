@@ -12,6 +12,7 @@ export const wedding = {
   date: "2026-10-10T11:00:00-03:00",
   dateLabel: "10 de outubro de 2026",
   timeLabel: "11h",
+  rsvpDeadline: "25 de setembro de 2026",
   city: "São Paulo, SP",
   venue: "Rua Dona Ana Neri, 721 — Cambuci, São Paulo/SP",
   venueAddress: "Rua Dona Ana Neri, 721 — Cambuci, São Paulo/SP",
@@ -35,7 +36,7 @@ export const timeline = [
 export const faqs = [
   {
     q: "Até quando posso confirmar presença?",
-    a: "Para cuidarmos de cada detalhe com o carinho que esse dia merece, pedimos que confirme sua presença o quanto antes. Temos pouco tempo para concluir a organização.",
+    a: "Para cuidarmos de cada detalhe com o carinho que esse dia merece, pedimos que confirme sua presença o quanto antes e, no máximo, até 25 de setembro de 2026. Esse prazo é muito importante para concluirmos a organização com todo o cuidado.",
   },
   {
     q: "Terá estacionamento?",
@@ -57,5 +58,6 @@ export const navLinks = [
   { href: "#programacao", label: "Programação" },
   { href: "#galeria", label: "Galeria" },
   { href: "#presentes", label: "Presentes" },
+  { href: "#recados", label: "Recados" },
   { href: "https://wa.me/5511925308573?text=Oi%20J%C3%A9ssica%2C%20gostaria%20de%20confirmar%20minha%20presen%C3%A7a%20em%20seu%20casamento%F0%9F%A5%B0", label: "Confirmar presença" },
 ];
