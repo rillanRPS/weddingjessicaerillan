@@ -29,6 +29,7 @@ type Gift = {
   title: string;
   description: string | null;
   price: number | null;
+  sort_order: number;
   claimed_at: string | null;
 };
 
@@ -62,6 +63,37 @@ const brl = (value: number) =>
 
 
 
+
+const giftCacheKey = "wedding-gifts-cache-v2";
+
+function readGiftCache(): Gift[] {
+  if (typeof window === "undefined") return [];
+
+  try {
+    const parsed = JSON.parse(window.localStorage.getItem(giftCacheKey) ?? "null");
+    if (!Array.isArray(parsed)) return [];
+
+    return parsed.filter(
+      (gift): gift is Gift =>
+        Boolean(gift) &&
+        typeof gift.id === "string" &&
+        typeof gift.sort_order === "number" &&
+        (typeof gift.price === "number" || gift.price === null),
+    );
+  } catch {
+    return [];
+  }
+}
+
+function writeGiftCache(gifts: Gift[]) {
+  if (typeof window === "undefined" || gifts.length === 0) return;
+
+  try {
+    window.localStorage.setItem(giftCacheKey, JSON.stringify(gifts));
+  } catch {
+    // Private browsing can block localStorage; the live query still works.
+  }
+}
 
 const giftCopy: GiftCopy[] = [
   { order: 1, badge: "⭐", title: "🧳 Kit de viagem para a nossa nova jornada", price: 500 },
@@ -139,14 +171,26 @@ export function Gifts() {
   const { data: gifts = [], isLoading, isError, refetch } = useQuery({
     queryKey: ["gifts"],
     refetchInterval: 15000,
+    refetchOnReconnect: true,
+    refetchOnWindowFocus: true,
+    retry: 5,
+    retryDelay: (attempt) => Math.min(750 * 2 ** attempt, 8000),
+    staleTime: 10000,
     queryFn: async () => {
       const { data, error } = await supabase
         .from("gifts")
-        .select("id, title, description, price, claimed_at")
+        .select("id, title, description, price, sort_order, claimed_at")
         .neq("sort_order", 23)
         .order("sort_order", { ascending: true });
-      if (error) throw error;
-      return data as Gift[];
+      if (error) {
+        const cached = readGiftCache();
+        if (cached.length > 0) return cached;
+        throw error;
+      }
+
+      const freshGifts = data as Gift[];
+      writeGiftCache(freshGifts);
+      return freshGifts;
     },
   });
 
@@ -158,12 +202,14 @@ export function Gifts() {
 
 
   const storedGifts = Array.isArray(gifts) ? gifts : [];
+  const giftsByOrder = new Map(storedGifts.map((gift) => [gift.sort_order, gift]));
   const visibleGifts: Gift[] = giftCopy.map((copy, index) => ({
-    id: storedGifts[index]?.id ?? "display-" + copy.price + "-" + index,
+    id: giftsByOrder.get(copy.order)?.id ?? "display-" + copy.price + "-" + index,
     title: copy.title,
     description: null,
     price: copy.price,
-    claimed_at: storedGifts[index]?.claimed_at ?? null,
+    sort_order: copy.order,
+    claimed_at: giftsByOrder.get(copy.order)?.claimed_at ?? null,
   }));
 
 
@@ -312,7 +358,7 @@ export function Gifts() {
         ) : isError ? (
           <div role="alert" className="mx-auto mt-14 max-w-xl rounded-2xl border border-border bg-background p-8 text-center shadow-sm">
             <p className="font-serif text-2xl text-foreground">A lista está fazendo uma breve pausa.</p>
-            <p className="mt-3 text-base leading-relaxed text-muted-foreground">Não conseguimos carregar os presentes agora. Tente novamente em instantes.</p>
+            <p className="mt-3 text-base leading-relaxed text-muted-foreground">Não conseguimos carregar os presentes agora. Tente novamente em instantes. Se preferir, o PIX direto continua disponível logo abaixo.</p>
             <button type="button" onClick={() => void refetch()} className="press mt-6 min-h-11 rounded-full bg-sage-deep px-6 py-2.5 text-[0.7rem] uppercase tracking-[0.2em] text-primary-foreground hover:bg-sage-deep/90">Tentar novamente</button>
           </div>
         ) : (
