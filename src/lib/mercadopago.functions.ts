@@ -4,7 +4,10 @@ type CheckoutInput = { giftId: string; name: string; phone: string; origin?: str
 
 async function invoke(body: Record<string, unknown>) {
   const { data, error } = await supabase.functions.invoke("mercadopago", { body });
-  if (error) throw new Error("Não foi possível conectar ao pagamento agora.");
+  if (error) {
+    console.error("Mercado Pago function error", error);
+    throw new Error("PAGAMENTO_INDISPONIVEL");
+  }
   return data;
 }
 
