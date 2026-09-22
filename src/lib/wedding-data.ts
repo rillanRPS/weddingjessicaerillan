@@ -11,7 +11,7 @@ export const wedding = {
   monogram: "J & R",
   date: "2026-10-10T12:30:00-03:00",
   dateLabel: "10 de outubro de 2026",
-  timeLabel: "12h30",
+  timeLabel: "12h00",
   rsvpDeadline: "25 de setembro de 2026",
   city: "São Paulo, SP",
   venue: "Rua Dona Ana Neri, 721 — Cambuci, São Paulo/SP",
