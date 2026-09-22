@@ -9,9 +9,9 @@ export const wedding = {
   brideFirst: "Jessica",
   groomFirst: "Rillan",
   monogram: "J & R",
-  date: "2026-10-10T11:00:00-03:00",
+  date: "2026-10-10T12:30:00-03:00",
   dateLabel: "10 de outubro de 2026",
-  timeLabel: "11h",
+  timeLabel: "12h30",
   rsvpDeadline: "25 de setembro de 2026",
   city: "São Paulo, SP",
   venue: "Rua Dona Ana Neri, 721 — Cambuci, São Paulo/SP",
@@ -28,9 +28,9 @@ export const wedding = {
 };
 
 export const timeline = [
-  { time: "11h00", title: "Recepção dos convidados", text: "Chegada e acolhimento dos convidados." },
-  { time: "12h00", title: "Cerimônia", text: "Celebração da nossa união." },
-  { time: "13h00", title: "Almoço", text: "Almoço servido no salão." },
+  { time: "12h00", title: "Recepção dos convidados", text: "Chegada e acolhimento dos convidados." },
+  { time: "12h30", title: "Cerimônia", text: "Celebração da nossa união." },
+  { time: "13h15", title: "Almoço", text: "Almoço servido no salão." },
 ];
 
 export const faqs = [
