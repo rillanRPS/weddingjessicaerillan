@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { ChevronDown } from "lucide-react";
 import { wedding } from "@/lib/wedding-data";
 import coupleRails from "@/assets/couple-rails.jpg.asset.json";
 import { assetUrl } from "@/lib/asset-url";
@@ -35,6 +36,9 @@ export function Hero() {
         alt="Jessica e Rillan abraçados sobre os trilhos do trem"
         className="absolute inset-0 size-full object-cover object-[center_30%]"
       />
+      <div className="hero-aurora hero-aurora-left" aria-hidden="true" />
+      <div className="hero-aurora hero-aurora-right" aria-hidden="true" />
+      <div className="hero-sparkles" aria-hidden="true" />
       <div className="absolute inset-0 bg-foreground/45" />
 
       <div className="fade-up relative mx-auto flex min-h-[100svh] max-w-3xl flex-col items-center justify-center px-5 text-center">
@@ -82,6 +86,14 @@ export function Hero() {
         <p className="mt-4 rounded-full border border-cream/30 bg-black/20 px-4 py-2 text-xs font-medium tracking-[0.12em] text-cream/90 backdrop-blur-sm">
           Confirme até {wedding.rsvpDeadline}
         </p>
+
+        <a
+          href="#historia"
+          aria-label="Explorar a história do casal"
+          className="hero-scroll-cue press mt-10 inline-flex size-12 items-center justify-center rounded-full border border-cream/35 bg-black/15 text-cream backdrop-blur-sm"
+        >
+          <ChevronDown className="size-5" aria-hidden="true" />
+        </a>
       </div>
     </section>
   );
