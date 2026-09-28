@@ -1683,3 +1683,270 @@ footer {
   .gift-claimed-status { animation: none; }
   .guestbook-card { transition: none; }
 }
+
+
+/* Vivid, tactile polish: color, motion and rounded app-like surfaces. */
+:root {
+  --sage: oklch(0.86 0.075 154);
+  --sage-deep: oklch(0.56 0.105 154);
+  --blush: oklch(0.94 0.052 22);
+  --blush-deep: oklch(0.76 0.115 22);
+  --gold: oklch(0.79 0.12 84);
+  --radius: 1.15rem;
+}
+
+body {
+  background:
+    radial-gradient(circle at 8% 14%, color-mix(in oklab, var(--blush-deep) 22%, transparent), transparent 25rem),
+    radial-gradient(circle at 92% 22%, color-mix(in oklab, var(--sage-deep) 19%, transparent), transparent 28rem),
+    radial-gradient(circle at 48% 80%, color-mix(in oklab, var(--gold) 14%, transparent), transparent 30rem),
+    var(--background);
+}
+
+section:not(#topo) {
+  overflow: clip;
+}
+
+section:not(#topo)::after {
+  position: absolute;
+  right: -10rem;
+  bottom: 12%;
+  z-index: -1;
+  width: 18rem;
+  height: 18rem;
+  border-radius: 999px;
+  background: radial-gradient(circle, color-mix(in oklab, var(--gold) 15%, transparent), transparent 68%);
+  content: "";
+  filter: blur(1px);
+  opacity: 0.72;
+  animation: section-orb-float 12s ease-in-out infinite alternate;
+}
+
+.reveal.reveal-lux {
+  transform: translateY(28px) scale(0.975);
+  filter: blur(7px);
+  transition:
+    opacity 850ms cubic-bezier(0.16, 1, 0.3, 1),
+    transform 850ms cubic-bezier(0.16, 1, 0.3, 1),
+    filter 750ms ease;
+}
+
+.reveal.reveal-lux.reveal-in {
+  transform: translateY(0) scale(1);
+  filter: blur(0);
+}
+
+.surface,
+#presentes li,
+#galeria .mt-7,
+#faq [data-state] {
+  border-radius: 1.85rem;
+}
+
+.surface,
+#presentes li,
+#faq [data-state] {
+  border-color: color-mix(in oklab, var(--sage-deep) 20%, var(--border));
+  box-shadow:
+    0 1px 0 color-mix(in oklab, white 74%, transparent) inset,
+    0 22px 60px -42px color-mix(in oklab, var(--sage-deep) 76%, transparent),
+    0 12px 30px -30px color-mix(in oklab, var(--blush-deep) 72%, transparent);
+}
+
+#cerimonia li,
+#programacao .surface,
+#galeria button,
+#presentes button,
+#faq button,
+.guestbook-form,
+.guestbook-card {
+  border-radius: 1.2rem;
+}
+
+#programacao ol {
+  border-left-color: color-mix(in oklab, var(--sage-deep) 55%, transparent);
+}
+
+#programacao ol > li > span {
+  background: var(--gold);
+  box-shadow: 0 0 0 5px color-mix(in oklab, var(--gold) 18%, var(--background)), 0 0 22px color-mix(in oklab, var(--gold) 60%, transparent);
+}
+
+#programacao .surface:hover,
+#cerimonia li:hover,
+#faq [data-state]:hover,
+.guestbook-card:hover {
+  transform: translateY(-5px) scale(1.01);
+}
+
+#presentes li {
+  background:
+    linear-gradient(145deg, color-mix(in oklab, white 78%, transparent), color-mix(in oklab, var(--blush) 38%, transparent)),
+    var(--card);
+}
+
+#presentes li::before {
+  height: 0.28rem;
+  background: linear-gradient(90deg, var(--sage-deep), var(--gold) 52%, var(--blush-deep));
+  opacity: 0.95;
+}
+
+#presentes li:hover {
+  transform: translateY(-7px) scale(1.012);
+  box-shadow:
+    0 0 0 1px color-mix(in oklab, var(--gold) 32%, transparent),
+    0 26px 56px -34px color-mix(in oklab, var(--sage-deep) 62%, transparent),
+    0 0 36px -12px color-mix(in oklab, var(--gold) 40%, transparent);
+}
+
+#presentes button,
+#cerimonia a[href*="google"],
+#topo a[href*="wa.me"] {
+  letter-spacing: 0.22em;
+}
+
+#presentes button:hover,
+#cerimonia a[href*="google"]:hover {
+  box-shadow: 0 0 0 4px color-mix(in oklab, var(--gold) 14%, transparent), 0 14px 30px -18px color-mix(in oklab, var(--gold) 76%, transparent);
+}
+
+#galeria figure {
+  border-radius: 2rem;
+  border-color: color-mix(in oklab, var(--gold) 36%, transparent);
+}
+
+#galeria .mt-7 {
+  background: linear-gradient(145deg, color-mix(in oklab, var(--card) 86%, transparent), color-mix(in oklab, var(--sage) 16%, transparent));
+  box-shadow: 0 18px 42px -34px color-mix(in oklab, var(--sage-deep) 64%, transparent);
+}
+
+nav[aria-label="Navegação rápida"] {
+  background: color-mix(in oklab, var(--background) 78%, transparent);
+  box-shadow:
+    0 0 0 1px color-mix(in oklab, var(--gold) 18%, transparent),
+    0 20px 42px -26px color-mix(in oklab, var(--sage-deep) 64%, transparent);
+}
+
+nav[aria-label="Navegação rápida"] a[aria-current="true"] {
+  background: linear-gradient(145deg, color-mix(in oklab, var(--sage) 76%, transparent), color-mix(in oklab, var(--cream) 54%, transparent));
+  box-shadow: 0 8px 20px -14px color-mix(in oklab, var(--sage-deep) 82%, transparent);
+}
+
+.scroll-progress {
+  height: 3px;
+  background: color-mix(in oklab, var(--cream) 20%, transparent);
+}
+
+.scroll-progress span {
+  background: linear-gradient(90deg, var(--sage-deep), var(--gold) 52%, var(--blush-deep));
+  box-shadow: 0 0 18px color-mix(in oklab, var(--gold) 70%, transparent);
+}
+
+.hero-aurora {
+  position: absolute;
+  z-index: 1;
+  width: min(48vw, 34rem);
+  height: min(48vw, 34rem);
+  border-radius: 50%;
+  pointer-events: none;
+  filter: blur(24px);
+  mix-blend-mode: screen;
+  opacity: 0.58;
+  animation: hero-aurora-drift 11s ease-in-out infinite alternate;
+}
+
+#topo > .hero-aurora,
+#topo > .hero-sparkles {
+  z-index: 0;
+}
+
+#topo > div:last-child {
+  z-index: 2;
+}
+
+.hero-aurora-left {
+  top: 10%;
+  left: -12%;
+  background: radial-gradient(circle, color-mix(in oklab, var(--gold) 60%, transparent), transparent 68%);
+}
+
+.hero-aurora-right {
+  right: -12%;
+  bottom: 6%;
+  background: radial-gradient(circle, color-mix(in oklab, var(--blush-deep) 50%, transparent), transparent 68%);
+  animation-delay: -4s;
+}
+
+.hero-sparkles {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  background-image:
+    radial-gradient(circle at 12% 24%, color-mix(in oklab, var(--cream) 90%, transparent) 0 1px, transparent 1.7px),
+    radial-gradient(circle at 72% 17%, color-mix(in oklab, var(--gold) 90%, transparent) 0 1.2px, transparent 2px),
+    radial-gradient(circle at 86% 68%, color-mix(in oklab, var(--cream) 80%, transparent) 0 1px, transparent 1.8px),
+    radial-gradient(circle at 24% 80%, color-mix(in oklab, var(--gold) 82%, transparent) 0 1.2px, transparent 2px);
+  background-size: 18rem 18rem, 22rem 22rem, 20rem 20rem, 25rem 25rem;
+  animation: sparkle-shift 14s linear infinite;
+}
+
+.hero-scroll-cue {
+  position: relative;
+  z-index: 3;
+  animation: scroll-cue-bounce 2.6s ease-in-out infinite;
+}
+
+.hero-scroll-cue:hover {
+  background: color-mix(in oklab, var(--cream) 22%, transparent);
+  box-shadow: 0 0 0 5px color-mix(in oklab, var(--cream) 12%, transparent), 0 0 28px color-mix(in oklab, var(--gold) 42%, transparent);
+}
+
+@keyframes section-orb-float {
+  from { transform: translate3d(0, -0.7rem, 0) scale(0.92); }
+  to { transform: translate3d(-1.4rem, 1rem, 0) scale(1.12); }
+}
+
+@keyframes hero-aurora-drift {
+  from { transform: translate3d(-1rem, -0.8rem, 0) scale(0.9); }
+  to { transform: translate3d(1.5rem, 1rem, 0) scale(1.15); }
+}
+
+@keyframes sparkle-shift {
+  from { background-position: 0 0, 0 0, 0 0, 0 0; }
+  to { background-position: 34px -48px, -24px 34px, 18px -28px, -35px 42px; }
+}
+
+@keyframes scroll-cue-bounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(6px); }
+}
+
+@media (max-width: 767px) {
+  #presentes li,
+  .surface,
+  #faq [data-state] {
+    border-radius: 1.55rem;
+  }
+
+  .hero-aurora {
+    width: 72vw;
+    height: 72vw;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  section:not(#topo)::after,
+  .hero-aurora,
+  .hero-sparkles,
+  .hero-scroll-cue {
+    animation: none;
+  }
+
+  .reveal.reveal-lux,
+  .reveal.reveal-lux.reveal-in {
+    filter: none;
+    transform: none;
+  }
+}
+
