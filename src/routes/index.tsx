@@ -57,7 +57,12 @@ function CinematicIntro() {
       <div className="cinematic-intro-orbit cinematic-intro-orbit-a" />
       <div className="cinematic-intro-orbit cinematic-intro-orbit-b" />
       <div className="cinematic-intro-heart" aria-hidden="true">
-        <span>♡</span>
+        <svg className="cinematic-intro-heart-mark" viewBox="0 0 100 90" role="presentation">
+          <path
+            pathLength="100"
+            d="M50 82C43 75 14 54 14 32 14 17 24 8 37 8c6 0 11 4 13 11 2-7 7-11 13-11 13 0 23 9 23 24 0 22-29 43-36 50Z"
+          />
+        </svg>
       </div>
       <div className="cinematic-intro-grain" />
       <div className="cinematic-intro-monogram" aria-label="J e R">
