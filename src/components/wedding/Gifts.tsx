@@ -119,6 +119,7 @@ const giftCopy: GiftCopy[] = [
   { order: 21, title: "🔥 Forno elétrico", price: 750 },
   { order: 22, title: "🥤 Liquidificador para nossa cozinha", price: 300 },
   { order: 24, title: "🛏️ Cama e cabeceira para o nosso quarto", price: 1000 },
+  { order: 25, title: "🔥 Fogão de 5 bocas para nossa cozinha", price: 1000 },
 ];
 
 
@@ -137,7 +138,7 @@ const giftGroups = [
   {
     title: "Nosso lar",
     note: "Detalhes que vão ganhar espaço na casa que estamos construindo.",
-    orders: [2, 3, 4, 6, 7, 8, 9, 11, 12, 13, 14, 15, 16, 18, 19, 21, 22, 24],
+    orders: [2, 3, 4, 6, 7, 8, 9, 11, 12, 13, 14, 15, 16, 18, 19, 21, 22, 24, 25],
   },
   {
     title: "Gestos especiais",
