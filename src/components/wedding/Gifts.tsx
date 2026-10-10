@@ -383,7 +383,7 @@ export function Gifts() {
                           {copy.badge && <span className="text-base tracking-normal">{copy.badge}</span>}
                         </div>
                         <h4 className="mt-5 font-serif text-2xl leading-tight text-foreground">{copy.title}</h4>
-                        <p className="mt-4 font-serif text-xl text-sage-deep">{brl(copy.price)}</p>
+                        {!gift.claimed_at && <p className="mt-4 font-serif text-xl text-sage-deep">{brl(copy.price)}</p>}
                         <div className="mt-6">
                           {gift.claimed_at ? (
                             <p className="gift-claimed-status inline-flex items-center rounded-full border border-gold/60 bg-gold/15 px-4 py-2 text-sm font-semibold uppercase tracking-[0.16em] text-gold-deep">✓ Já presenteado</p>
