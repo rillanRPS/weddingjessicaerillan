@@ -1,34 +1,9 @@
-import { useEffect, useState } from "react";
 import { ChevronDown } from "lucide-react";
 import { wedding } from "@/lib/wedding-data";
 import coupleRails from "@/assets/couple-rails.jpg.asset.json";
 import { assetUrl } from "@/lib/asset-url";
 
-function useCountdown(target: string) {
-  const [left, setLeft] = useState<{ d: number; h: number; m: number; s: number } | null>(null);
-
-  useEffect(() => {
-    const tick = () => {
-      const diff = new Date(target).getTime() - Date.now();
-      const clamped = Math.max(diff, 0);
-      setLeft({
-        d: Math.floor(clamped / 86400000),
-        h: Math.floor((clamped / 3600000) % 24),
-        m: Math.floor((clamped / 60000) % 60),
-        s: Math.floor((clamped / 1000) % 60),
-      });
-    };
-    tick();
-    const id = window.setInterval(tick, 1000);
-    return () => window.clearInterval(id);
-  }, [target]);
-
-  return left;
-}
-
 export function Hero() {
-  const left = useCountdown(wedding.date);
-
   return (
     <section id="topo" className="relative min-h-[100svh] w-full overflow-hidden">
       <img
@@ -41,45 +16,31 @@ export function Hero() {
       <div className="hero-sparkles" aria-hidden="true" />
       <div className="absolute inset-0 bg-foreground/45" />
 
-      <div className="fade-up relative mx-auto flex min-h-[100svh] max-w-3xl flex-col items-center justify-center px-5 text-center">
-        <p className="text-[0.7rem] uppercase tracking-[0.4em] text-cream/90">Vamos nos casar</p>
+      <div className="fade-up relative mx-auto flex min-h-[100svh] max-w-3xl flex-col items-center justify-center px-5 py-20 text-center">
+        <p className="text-[0.7rem] uppercase tracking-[0.4em] text-cream/90">Uma celebração para sempre</p>
         <h1 className="mt-6 font-serif text-6xl leading-[0.95] text-cream sm:text-7xl md:text-8xl">
           {wedding.brideFirst}
           <span className="mx-3 italic">&</span>
           {wedding.groomFirst}
         </h1>
-        <div className="mt-8 flex items-center gap-4 text-[0.7rem] uppercase tracking-[0.3em] text-cream/85">
-          <span className="h-px w-10 bg-cream/50" />
-          {wedding.dateLabel}
-          <span className="h-px w-10 bg-cream/50" />
-        </div>
-        <p className="mt-4 text-sm text-cream/80">
+        <p className="mt-6 text-sm text-cream/80">
           {wedding.venue}
         </p>
 
-        {left && (
-          <dl className="mt-12 flex gap-8 sm:gap-12">
-            {[
-              { v: left.d, l: "dias" },
-              { v: left.h, l: "horas" },
-              { v: left.m, l: "min" },
-              { v: left.s, l: "seg" },
-            ].map((item) => (
-              <div key={item.l}>
-                <dt className="font-serif text-4xl text-cream">
-                  {String(item.v).padStart(2, "0")}
-                </dt>
-                <dd className="mt-1 text-[0.6rem] uppercase tracking-[0.25em] text-cream/70">
-                  {item.l}
-                </dd>
-              </div>
-            ))}
-          </dl>
-        )}
+        <div className="mt-9 w-full max-w-xl rounded-[2rem] border border-cream/35 bg-black/20 px-6 py-7 shadow-[0_18px_70px_rgba(0,0,0,0.22)] backdrop-blur-md sm:px-10 sm:py-8">
+          <p className="text-[0.65rem] uppercase tracking-[0.3em] text-cream/75">Uma data que guardaremos para sempre</p>
+          <p className="mt-4 font-serif text-2xl text-cream sm:text-3xl">Nosso casamento aconteceu em</p>
+          <p className="mt-1 font-serif text-4xl italic text-cream sm:text-5xl">10/10/2026</p>
+          <div className="mx-auto my-5 h-px w-14 bg-cream/45" />
+          <p className="font-serif text-lg leading-relaxed text-cream sm:text-xl">
+            “Grandes coisas fez o Senhor por nós; por isso estamos alegres.”
+          </p>
+          <p className="mt-2 text-[0.65rem] uppercase tracking-[0.25em] text-cream/70">Salmos 126:3</p>
+        </div>
 
         <a
           href="https://wa.me/5511925308573?text=Oi%20J%C3%A9ssica%2C%20gostaria%20de%20confirmar%20minha%20presen%C3%A7a%20em%20seu%20casamento%F0%9F%A5%B0"
-          className="glow-cta press mt-12 inline-flex items-center rounded-full border border-cream/80 bg-cream/10 px-9 py-3.5 text-[0.7rem] uppercase tracking-[0.28em] text-cream transition-colors hover:bg-cream hover:text-foreground"
+          className="glow-cta press mt-8 inline-flex items-center rounded-full border border-cream/80 bg-cream/10 px-9 py-3.5 text-[0.7rem] uppercase tracking-[0.28em] text-cream transition-colors hover:bg-cream hover:text-foreground"
         >
           Confirmar presença
         </a>
@@ -87,7 +48,7 @@ export function Hero() {
         <a
           href="#historia"
           aria-label="Explorar a história do casal"
-          className="hero-scroll-cue press mt-10 inline-flex size-12 items-center justify-center rounded-full border border-cream/35 bg-black/15 text-cream backdrop-blur-sm"
+          className="hero-scroll-cue press mt-8 inline-flex size-12 items-center justify-center rounded-full border border-cream/35 bg-black/15 text-cream backdrop-blur-sm"
         >
           <ChevronDown className="size-5" aria-hidden="true" />
         </a>
